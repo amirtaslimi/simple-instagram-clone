@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.Followers">
+   <children>
+      <TableView layoutX="2.0" prefHeight="410.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="199.19998788833618" text="followers" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

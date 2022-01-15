@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+
+<AnchorPane prefHeight="684.0" prefWidth="562.0" style="-fx-background-color: #F9839F;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.HomePageController">
+   <children>
+      <ButtonBar layoutY="629.0" prefHeight="54.0" prefWidth="419.0">
+        <buttons>
+            <JFXButton buttonType="RAISED" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="Home Page" />
+            <JFXButton buttonType="RAISED" onAction="#goMessagePage" prefHeight="26.0" prefWidth="153.0" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="Message Page" />
+            <JFXButton buttonType="RAISED" onAction="#profileButton" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="Profile" />
+        </buttons>
+      </ButtonBar>
+      <ListView fx:id="homeList" layoutX="89.0" layoutY="139.0" prefHeight="446.0" prefWidth="410.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ListView>
+      <TextField fx:id="searchUserField" layoutX="151.0" layoutY="29.0" prefHeight="26.0" prefWidth="269.0" />
+      <JFXButton buttonType="RAISED" layoutX="63.0" layoutY="30.0" onAction="#searchUserButton" prefHeight="26.0" prefWidth="87.0" style="-fx-background-color: #F7446D;" text="Search" />
+      <Label fx:id="labelSearch" layoutX="421.0" layoutY="28.0" prefHeight="26.0" prefWidth="135.0" />
+      <JFXButton buttonType="RAISED" layoutY="132.0" onAction="#postPageButton" prefHeight="54.0" prefWidth="87.0" style="-fx-background-color: pink;" text="Open">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" blue="0.8500000238418579" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+   </children>
+</AnchorPane>

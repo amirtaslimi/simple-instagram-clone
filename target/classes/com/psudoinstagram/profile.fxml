@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="684.0" prefWidth="562.0" style="-fx-background-color: #FDCFDA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.ProfileController">
+   <children>
+      <ButtonBar layoutY="629.0" prefHeight="54.0" prefWidth="419.0" />
+      <Circle fill="DODGERBLUE" layoutX="99.0" layoutY="45.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
+      <JFXButton layoutX="218.0" onAction="#followers" prefHeight="90.0" prefWidth="126.0" style="-fx-background-color: #F9839F;" text="Followers" />
+      <JFXButton layoutX="344.0" onAction="#followings" prefHeight="90.0" prefWidth="126.0" style="-fx-background-color: #F9839F;" text="Followings" />
+      <TextArea fx:id="sendPost" layoutX="192.0" layoutY="548.0" prefHeight="82.0" prefWidth="362.0" promptText="text post">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
+      <JFXButton buttonType="RAISED" layoutX="109.0" layoutY="548.0" onAction="#sendPostButton" prefHeight="82.0" prefWidth="84.0" style="-fx-background-color: #F9839F;" text="SEND">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <ListView fx:id="mypostList" layoutX="110.0" layoutY="158.0" prefHeight="391.0" prefWidth="399.0" />
+      <JFXButton buttonType="RAISED" layoutY="158.0" onAction="#postPage" prefHeight="82.0" prefWidth="110.0" style="-fx-background-color: purple;" text="Post Page" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8999999761581421" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+   </children>
+</AnchorPane>
