@@ -10,16 +10,17 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="462.0" prefWidth="422.0" style="-fx-background-color: #FBA7BB;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.PostPageController">
+<AnchorPane prefHeight="462.0" prefWidth="475.0" style="-fx-background-color: #FBA7BB;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.PostPageController">
    <children>
-      <Label fx:id="postLable" layoutX="-1.0" layoutY="1.0" prefHeight="102.0" prefWidth="366.0" style="-fx-background-color: gray;" text="post">
+      <Label fx:id="postLable" alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="102.0" prefWidth="366.0" style="-fx-background-color: white;" text="post">
          <font>
             <Font name="Arial Bold" size="21.0" />
          </font>
       </Label>
       <Circle fx:id="likeCircle" layoutX="392.0" layoutY="41.0" onMouseClicked="#likeCircle" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
-      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="372.0" onAction="#sendComment" prefHeight="90.0" prefWidth="85.0" text="Send">
+      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="408.0" onAction="#sendComment" prefHeight="54.0" prefWidth="86.0" style="-fx-background-color: red;" text="Send">
          <ripplerFill>
             <RadialGradient centerX="0.49118939370310777" centerY="0.5" radius="0.5">
                <stops>
@@ -43,6 +44,9 @@
          </ripplerFill>
       </JFXButton>
       <TextField fx:id="commentField" layoutX="136.0" layoutY="405.0" prefHeight="26.0" prefWidth="286.0" />
-      <ListView fx:id="commentList" layoutX="58.0" layoutY="103.0" prefHeight="300.0" prefWidth="366.0" />
+      <ListView fx:id="commentList" layoutX="108.0" layoutY="103.0" prefHeight="300.0" prefWidth="366.0" />
+      <Text layoutX="381.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="like" />
+      <JFXButton layoutX="6.0" layoutY="103.0" onAction="#openReply" style="-fx-background-color: red;" text="open" />
+      <Text layoutX="6.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="open comments for reply and like" wrappingWidth="86.39999999999998" />
    </children>
 </AnchorPane>

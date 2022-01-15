@@ -8,8 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -24,8 +22,6 @@ public class HomePageController implements Initializable {
     @FXML
     private ListView<Post> homeList;
     User consumerUser;
-    @FXML
-    private Label labelSearch;
     @FXML
     private TextField searchUserField;
 
@@ -45,7 +41,6 @@ public class HomePageController implements Initializable {
             observableList.add(Data.HomePost.get(x));
         }
         homeList.setItems(observableList);
-//        homeList.setCellFactory(postListView -> new ListCell<Post>(){s});
         for (Post homepost:Data.HomePost) {
             if (homepost.id == homeList.getSelectionModel().getSelectedIndex()+1){
                 goPostPage(homepost);
@@ -72,6 +67,15 @@ public class HomePageController implements Initializable {
         stage.setScene(new Scene(message));
         stage.show();
         msgController.buildChatRoomsList();
+    }
+
+    @FXML
+    void refresh(ActionEvent event) {
+        ObservableList<Post> observableList = FXCollections.observableArrayList();
+        for (int x = 0; x < Data.HomePost.size(); x++) {
+            observableList.add(Data.HomePost.get(x));
+        }
+        homeList.setItems(observableList);
     }
     @FXML
     void profileButton(ActionEvent event) throws IOException {
@@ -104,7 +108,7 @@ public class HomePageController implements Initializable {
         AnchorPane postPage = postPageLoader.load();
         // Get the Controller from the FXMLLoader
         PostPageController postPageController = postPageLoader.getController();
-        postPageController.post = post;
+        postPageController.currentPost = post;
         postPageController.currentUser = consumerUser;
         Stage stage = new Stage();
         stage.setTitle("Post Page");

@@ -103,7 +103,7 @@ public class ProfileController {
         AnchorPane postPage = postPageLoader.load();
         // Get the Controller from the FXMLLoader
         PostPageController postPageController = postPageLoader.getController();
-        postPageController.post = post;
+        postPageController.currentPost = post;
         postPageController.currentUser = profileUser;
         Stage stage = new Stage();
         stage.setTitle("Post Page");
