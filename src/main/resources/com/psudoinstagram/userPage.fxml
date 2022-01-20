@@ -41,7 +41,7 @@
          </ripplerFill>
       </JFXButton>
       <JFXButton layoutY="9.0" onAction="#showMeButton" text="showme" />
-      <JFXButton fx:id="followUserButton1" buttonType="RAISED" layoutX="2.0" layoutY="121.0" onAction="#followUserButton" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #F9839F;" text="block">
+      <JFXButton fx:id="blockUserButton" buttonType="RAISED" layoutX="2.0" layoutY="121.0" onAction="#blockUserButton" prefHeight="40.0" prefWidth="137.0" style="-fx-background-color: #F9839F;" text="block">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>

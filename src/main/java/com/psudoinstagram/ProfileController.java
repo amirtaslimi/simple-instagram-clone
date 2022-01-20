@@ -1,7 +1,9 @@
 package com.psudoinstagram;
 
+import com.jfoenix.controls.JFXRadioButton;
 import com.psudoinstagram.model.Data;
 import com.psudoinstagram.model.Post;
+import com.psudoinstagram.model.PostType;
 import com.psudoinstagram.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +42,12 @@ public class ProfileController implements Initializable {
     @FXML
     private TextArea sendPost;
     @FXML
+    private JFXRadioButton photoRedioButton;
+    @FXML
+    private JFXRadioButton videoRedioButton;
+
+
+    @FXML
     void deletePostButton(ActionEvent event) {
 
     }
@@ -74,29 +82,44 @@ public class ProfileController implements Initializable {
 
     @FXML
     void sendPostButton(ActionEvent event) {
-        File file = fileChooser.showOpenDialog(null);
-
-        if (!sendPost.getText().isEmpty()) {
-            Post post = new Post(sendPost.getText(),file);
-            post.user=profileUser;
-            profileUser.posts.add(post);
-            Data.HomePost.add(post);
+        if (photoRedioButton.isSelected()){
+            File file = fileChooser.showOpenDialog(null);
+            if (!sendPost.getText().isEmpty()) {
+                Post post = new Post(sendPost.getText(),file);
+                post.user=profileUser;
+                post.postType = PostType.PHOTO;
+                profileUser.posts.add(post);
+                Data.HomePost.add(post);
+            }
         }
-
+        else if (videoRedioButton.isSelected()){
+            File file = fileChooser.showOpenDialog(null);
+            if (!sendPost.getText().isEmpty()) {
+                Post post = new Post(sendPost.getText(),file);
+                post.user=profileUser;
+                post.postType = PostType.VIDEO;
+                profileUser.posts.add(post);
+                Data.HomePost.add(post);
+            }
+        }
+        else {
+            if (!sendPost.getText().isEmpty()) {
+                Post post = new Post(sendPost.getText());
+                post.user=profileUser;
+                post.postType = PostType.TEXT;
+                profileUser.posts.add(post);
+                Data.HomePost.add(post);
+            }
+        }
         list();
     }
     @FXML
     void postPage(ActionEvent event) throws IOException {
-//        ObservableList<String> observableList = FXCollections.observableArrayList();
-//        for (int x = 0; x < profileUser.posts.size(); x++) {
-//            observableList.add(profileUser.posts.get(x).text);
-//        }
-//        mypostList.setItems(observableList);
-//        for (Post mypst:profileUser.posts) {
-//            if (mypst.id == mypostList.getSelectionModel().getSelectedIndex()+1){
-//                goPostPage(mypst);
-//            }
-//        }
+        for (Post mypst:profileUser.posts) {
+            if (mypst.equals(mypostList.getSelectionModel().getSelectedItem())){
+                goPostPage(mypst);
+            }
+        }
     }
 
     void list(){
@@ -140,15 +163,18 @@ public class ProfileController implements Initializable {
                     protected void updateItem(Post pst, boolean btl) {
                         super.updateItem(pst, btl);
                         if (pst != null) {
-                            setText(pst.text);
-//                                Image image = new Image(pst.file.toURI().toString());
-//                                ImageView imageView = new ImageView(image);
-//                                imageView.setX(170);
-//                                imageView.setY(10);
-//                                imageView.setFitWidth(270);
-//                                imageView.setPreserveRatio(true);
-//                                setGraphic(imageView);
-
+                            if (pst.postType == PostType.PHOTO){
+                                setText(pst.text);
+                                Image image = new Image(pst.file.toURI().toString());
+                                ImageView imageView = new ImageView(image);
+                                imageView.setX(170);
+                                imageView.setY(10);
+                                imageView.setFitWidth(270);
+                                imageView.setPreserveRatio(true);
+                                setGraphic(imageView);
+                            }
+                            else if (pst.postType == PostType.VIDEO){
+                                setText(pst.text);
                                 Media media = new Media(pst.file.toURI().toString());
                                 MediaPlayer player = new MediaPlayer(media);
                                 MediaView mediaView = new MediaView(player);
@@ -158,10 +184,11 @@ public class ProfileController implements Initializable {
                                 mediaView.setY(10);
                                 mediaView.setFitWidth(270);
                                 mediaView.setPreserveRatio(true);
-
                                 setGraphic(mediaView);
-
-
+                            }
+                            else {
+                                setText(pst.text);
+                            }
                         }
                     else {
                         setText(null);
@@ -171,6 +198,5 @@ public class ProfileController implements Initializable {
                 };
             return cell;}
         });
-        //mypostList.setItems(observableList);
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -77,5 +78,33 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="90.0" onAction="#sendPostButton" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #F9839F;" text="upload Photo">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <JFXRadioButton fx:id="videoRedioButton" layoutX="40.0" layoutY="549.0" text="Video" underline="true">
+         <selectedColor>
+            <Color red="1.0" />
+         </selectedColor>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="photoRedioButton" layoutX="40.0" layoutY="567.0" text="Photo" underline="true">
+         <selectedColor>
+            <Color red="1.0" />
+         </selectedColor>
+      </JFXRadioButton>
    </children>
 </AnchorPane>
