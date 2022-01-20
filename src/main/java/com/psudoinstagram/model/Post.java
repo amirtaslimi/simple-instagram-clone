@@ -1,10 +1,24 @@
 package com.psudoinstagram.model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Post {
     public final int id;
     public User user;
+
+    public Post(String text, File file) {
+        id = getNewId();
+        this.text = text;
+        this.file=file;
+    }
+
+    private static int helpId;
+    public String text;
+    public ArrayList<User>likedUsers = new ArrayList<>();
+    public ArrayList<Post>comments = new ArrayList<>();
+    public String imageFlag;
+    public File file;
 
     @Override
     public String toString() {
@@ -12,11 +26,6 @@ public class Post {
                 " " + user +
                 ", text='" + text + '\'';
     }
-
-    private static int helpId;
-    public String text;
-    public ArrayList<User>likedUsers = new ArrayList<>();
-    public ArrayList<Post>comments = new ArrayList<>();
 
     public Post(String text) {
         id = getNewId();

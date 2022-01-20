@@ -66,5 +66,6 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <Text fx:id="searchLabel" layoutX="162.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="178.13671875" />
    </children>
 </AnchorPane>

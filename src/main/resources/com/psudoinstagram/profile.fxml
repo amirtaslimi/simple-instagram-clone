@@ -59,5 +59,23 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <JFXButton buttonType="RAISED" layoutY="268.0" onAction="#deletePostButton" prefHeight="54.0" prefWidth="110.0" style="-fx-background-color: purple;" text="Delete post" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8999999761581421" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>

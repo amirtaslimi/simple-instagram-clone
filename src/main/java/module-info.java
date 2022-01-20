@@ -6,6 +6,8 @@ module com.psudoinstagram {
     requires org.kordamp.bootstrapfx.core;
     requires com.jfoenix;
 
+    requires javafx.media;
+
     opens com.psudoinstagram to javafx.fxml;
     exports com.psudoinstagram;
     exports com.psudoinstagram.model;

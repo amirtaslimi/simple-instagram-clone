@@ -10,8 +10,13 @@ public class User {
     public ArrayList<Post> posts = new ArrayList<>();
     public ArrayList<User>followers = new ArrayList<>();
     public ArrayList<User>followings = new ArrayList<>();
+    public ArrayList<User>blockedUsers = new ArrayList<>();
     public ArrayList<ChatRoom>userChats = new ArrayList<>();
 
+
+    public User() {
+        id = 0;
+    }
 
     public User(String userName, String userPass) {
         this.userName = userName;

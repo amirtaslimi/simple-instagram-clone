@@ -8,9 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class HomePageController implements Initializable {
     User consumerUser;
     @FXML
     private TextField searchUserField;
+    @FXML
+    private Label searchLabel;
 
 
     @Override
@@ -50,8 +54,15 @@ public class HomePageController implements Initializable {
     @FXML
     void searchUserButton(ActionEvent event) throws IOException {
         for (User usr: Data.allUsers) {
-            if (usr.userName.equals(searchUserField.getText())){
+            if (usr.userName.equals(searchUserField.getText()) && !usr.blockedUsers.contains(consumerUser)){
+                searchLabel.setText("User founded!.");
+                searchLabel.setTextFill(Color.GREEN);
                 goUserPage(usr);
+            }
+            else if (usr.userName.equals(searchUserField.getText()) && usr.blockedUsers.contains(consumerUser)){
+                searchLabel.setText("Sorry you were blocked by user.");
+                searchLabel.setTextFill(Color.RED);
+                break;
             }
         }
     }
@@ -88,7 +99,7 @@ public class HomePageController implements Initializable {
         stage.setTitle("Profile");
         stage.setScene(new Scene(profile));
         stage.show();
-        Procontroller.list();
+        //Procontroller.list();
     }
     void goUserPage(User user) throws IOException {
         FXMLLoader userPageLoader = new FXMLLoader(getClass().getResource("userPage.fxml"));

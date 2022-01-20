@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MessagePageController implements Initializable {
-    User currentUser;
+    User currentUser = new User();
     ChatRoom currentChatRoom;
     Message currentMessage;
 
