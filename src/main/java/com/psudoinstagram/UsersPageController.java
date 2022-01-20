@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -20,6 +21,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -30,10 +33,12 @@ import java.util.ResourceBundle;
 
 public class UsersPageController implements Initializable {
     User clientUser;
-    User searchedUser;
+    User searchedUser = new User();
     ObservableList<Post> observableList = FXCollections.observableArrayList();
-
-
+    @FXML
+    private Circle profileImage;
+    @FXML
+    private Label profileName;
     @FXML
     private JFXButton followUserButton;
     @FXML
@@ -149,10 +154,16 @@ public class UsersPageController implements Initializable {
         postPageController.likeState();
         postPageController.setPost();
     }
-
+    void setProfile(){
+        if (searchedUser.profileImage!=null){
+            Image image = new Image(searchedUser.profileImage.toURI().toString());
+            profileImage.setFill(new ImagePattern(image));
+            profileImage.setStroke(Color.SEAGREEN);
+        }
+        profileName.setText(searchedUser.userName);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         userPostList.setCellFactory(new Callback<ListView<Post>, ListCell<Post>>() {
             @Override
             public ListCell<Post> call(ListView<Post> stringListView) {

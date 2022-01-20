@@ -167,6 +167,7 @@ public class HomePageController implements Initializable {
         stage.setScene(new Scene(userPage));
         stage.show();
         usersPageController.showPost();
+        usersPageController.setProfile();
     }
     void goPostPage(Post post) throws IOException {
         FXMLLoader postPageLoader = new FXMLLoader(getClass().getResource("postPage.fxml"));

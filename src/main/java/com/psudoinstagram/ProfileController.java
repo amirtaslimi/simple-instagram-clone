@@ -22,6 +22,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -45,11 +48,27 @@ public class ProfileController implements Initializable {
     private JFXRadioButton photoRedioButton;
     @FXML
     private JFXRadioButton videoRedioButton;
-
+    @FXML
+    private Circle profileImage;
 
     @FXML
+    void uploadProfilePhoto(ActionEvent event){
+        File file = fileChooser.showOpenDialog(null);
+        try {
+            profileUser.profileImage=file;
+            Image image = new Image(profileUser.profileImage.toURI().toString());
+            profileImage.setFill(new ImagePattern(image));
+            profileImage.setStroke(Color.SEAGREEN);
+        }
+        catch (Exception e){
+            System.out.println("error");
+        }
+    }
+    @FXML
     void deletePostButton(ActionEvent event) {
-
+        profileUser.posts.remove(mypostList.getSelectionModel().getSelectedItem());
+        observableList.remove(mypostList.getSelectionModel().getSelectedItem());
+        list();
     }
 
 

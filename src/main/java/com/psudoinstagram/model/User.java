@@ -1,5 +1,6 @@
 package com.psudoinstagram.model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class User {
@@ -7,6 +8,7 @@ public class User {
     private static int helpId;
     public String userName;
     public String userPass;
+    public File profileImage;
     public ArrayList<Post> posts = new ArrayList<>();
     public ArrayList<User>followers = new ArrayList<>();
     public ArrayList<User>followings = new ArrayList<>();
