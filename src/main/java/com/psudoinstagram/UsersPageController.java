@@ -60,14 +60,12 @@ public class UsersPageController implements Initializable {
     @FXML
     void followUserButton(ActionEvent event) {
         int flag =0;
-        for (User usr:searchedUser.followers) {
-            if (usr.equals(clientUser)){
-                followUserButton.setText("Follow");
-                followUserButton.setTextFill(Color.BLACK);
-                searchedUser.followers.remove(clientUser);
-                clientUser.followings.remove(searchedUser);
-                flag = 1;
-            }
+        if (searchedUser.followers.contains(clientUser)){
+            followUserButton.setText("Follow");
+            followUserButton.setTextFill(Color.BLACK);
+            searchedUser.followers.remove(clientUser);
+            clientUser.followings.remove(searchedUser);
+            flag = 1;
         }
         if(flag==0){
             followUserButton.setText("Followed!!");
@@ -80,16 +78,14 @@ public class UsersPageController implements Initializable {
     @FXML
     void blockUserButton(ActionEvent event) {
         int flag =0;
-        for (User usr:searchedUser.followers) {
-            if (usr.equals(clientUser)){
-                blockUserButton.setText("Follow");
-                blockUserButton.setTextFill(Color.BLACK);
-                clientUser.blockedUsers.remove(searchedUser);
-                flag = 1;
-            }
+        if (clientUser.blockedUsers.contains(clientUser)){
+            blockUserButton.setText("block");
+            blockUserButton.setTextFill(Color.BLACK);
+            clientUser.blockedUsers.remove(searchedUser);
+            flag = 1;
         }
         if(flag==0){
-            blockUserButton.setText("Blocked!!");
+            blockUserButton.setText("blockedd!!");
             blockUserButton.setTextFill(Color.WHITE);
             clientUser.blockedUsers.add(searchedUser);
         }
@@ -139,6 +135,28 @@ public class UsersPageController implements Initializable {
 
 
 
+    void setProfile(){
+        if (searchedUser.profileImage!=null){
+            Image image = new Image(searchedUser.profileImage.toURI().toString());
+            profileImage.setFill(new ImagePattern(image));
+            profileImage.setStroke(Color.SEAGREEN);
+        }
+        profileName.setText(searchedUser.userName);
+        if (clientUser.blockedUsers.contains(searchedUser)){
+            blockUserButton.setText("blockedd!!");
+            blockUserButton.setTextFill(Color.WHITE);
+        }else{
+            blockUserButton.setText("block");
+            blockUserButton.setTextFill(Color.BLACK);
+        }
+        if (clientUser.followings.contains(searchedUser)){
+            followUserButton.setText("Followed!!");
+            followUserButton.setTextFill(Color.WHITE);
+        }else {
+            followUserButton.setText("Follow");
+            followUserButton.setTextFill(Color.BLACK);
+        }
+    }
     void goPostPage(Post post) throws IOException {
         FXMLLoader postPageLoader = new FXMLLoader(getClass().getResource("postPage.fxml"));
         AnchorPane postPage = postPageLoader.load();
@@ -153,14 +171,6 @@ public class UsersPageController implements Initializable {
         postPageController.list();
         postPageController.likeState();
         postPageController.setPost();
-    }
-    void setProfile(){
-        if (searchedUser.profileImage!=null){
-            Image image = new Image(searchedUser.profileImage.toURI().toString());
-            profileImage.setFill(new ImagePattern(image));
-            profileImage.setStroke(Color.SEAGREEN);
-        }
-        profileName.setText(searchedUser.userName);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

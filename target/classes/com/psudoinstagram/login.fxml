@@ -6,12 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="319.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.LoginController">
    <children>
       <TextField fx:id="usernameField" layoutX="109.0" layoutY="73.0" promptText="username" />
       <PasswordField fx:id="passwordField" layoutX="109.0" layoutY="125.0" promptText="password" />
-      <JFXButton buttonType="RAISED" layoutX="109.0" layoutY="179.0" onAction="#registerButton" ripplerFill="RED" text="Register!" />
-      <JFXButton buttonType="RAISED" layoutX="212.0" layoutY="179.0" onAction="#loginButton" ripplerFill="RED" text="login!" />
+      <JFXButton buttonType="RAISED" layoutX="194.0" layoutY="327.0" onAction="#registerButton" opacity="0.83" ripplerFill="RED" style="-fx-background-color: red;" text="Register!" />
+      <JFXButton buttonType="RAISED" layoutX="212.0" layoutY="179.0" onAction="#loginButton" ripplerFill="RED" style="-fx-background-color: red;" text="login!" />
       <Label fx:id="welcomeText" layoutX="114.0" layoutY="28.0" prefHeight="18.0" prefWidth="239.0" text="welcome to instagram" textAlignment="CENTER" />
+      <TextField fx:id="phoneNumberField" layoutX="109.0" layoutY="222.0" promptText="phone number" />
+      <TextField fx:id="emailField" layoutX="109.0" layoutY="272.0" promptText="email" />
    </children>
 </AnchorPane>

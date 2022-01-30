@@ -9,6 +9,9 @@ public class User {
     public String userName;
     public String userPass;
     public File profileImage;
+    public String phone;
+    public String email;
+    public ArrayList<Post> taggedPosts = new ArrayList<>();
     public ArrayList<Post> posts = new ArrayList<>();
     public ArrayList<User>followers = new ArrayList<>();
     public ArrayList<User>followings = new ArrayList<>();

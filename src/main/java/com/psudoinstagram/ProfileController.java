@@ -1,10 +1,7 @@
 package com.psudoinstagram;
 
 import com.jfoenix.controls.JFXRadioButton;
-import com.psudoinstagram.model.Data;
-import com.psudoinstagram.model.Post;
-import com.psudoinstagram.model.PostType;
-import com.psudoinstagram.model.User;
+import com.psudoinstagram.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -50,6 +48,13 @@ public class ProfileController implements Initializable {
     private JFXRadioButton videoRedioButton;
     @FXML
     private Circle profileImage;
+    @FXML
+    private Label profileNameLabel;
+
+    @FXML
+    private Label profilePhoneLabel;
+    @FXML
+    private Label profileEmailLabel;
 
     @FXML
     void uploadProfilePhoto(ActionEvent event){
@@ -140,7 +145,11 @@ public class ProfileController implements Initializable {
             }
         }
     }
-
+    @FXML
+    void tagUserButton(ActionEvent event) throws IOException{
+        if (mypostList.getSelectionModel().getSelectedItem()!=null)
+        goTagUserPage(mypostList.getSelectionModel().getSelectedItem());
+    }
     void list(){
         for (int x = 0; x < profileUser.posts.size(); x++) {
             if (!observableList.contains(profileUser.posts.get(x))){
@@ -149,6 +158,18 @@ public class ProfileController implements Initializable {
         }
         mypostList.setItems(observableList);
    }
+    void goTagUserPage(Post userPost) throws IOException {
+        FXMLLoader tagPageLoader = new FXMLLoader(getClass().getResource("tagUserPage.fxml"));
+        AnchorPane tg = tagPageLoader.load();
+        // Get the Controller from the FXMLLoader
+        TagUserPageController tagUserPageController = tagPageLoader.getController();
+        tagUserPageController.post = userPost;
+        Stage stage = new Stage();
+        stage.setTitle("tag page");
+        stage.setScene(new Scene(tg));
+        stage.show();
+        tagUserPageController.showList();
+    }
     void goPostPage(Post post) throws IOException {
         FXMLLoader postPageLoader = new FXMLLoader(getClass().getResource("postPage.fxml"));
         AnchorPane postPage = postPageLoader.load();
@@ -163,6 +184,17 @@ public class ProfileController implements Initializable {
         postPageController.list();
         postPageController.likeState();
         postPageController.setPost();
+    }
+
+    public void profileShow() {
+        if (profileUser.profileImage!=null){
+            Image image = new Image(profileUser.profileImage.toURI().toString());
+            profileImage.setFill(new ImagePattern(image));
+            profileImage.setStroke(Color.SEAGREEN);
+        }
+        profileNameLabel.setText(profileUser.userName);
+        profileEmailLabel.setText(profileUser.email);
+        profilePhoneLabel.setText(profileUser.phone);
     }
 
     @Override
