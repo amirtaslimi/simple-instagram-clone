@@ -45,13 +45,11 @@ public class PostPageController{
     @FXML
     void likeCircle(MouseEvent event) {
         int flag = 0;
-        for (User usr : currentPost.likedUsers) {
-            if (usr.equals(currentUser)) {
+            if (currentPost.likedUsers.contains(currentUser)) {
                 currentPost.likedUsers.remove(currentUser);
                 likeCircle.setFill(Color.BLACK);
                 flag = 1;
             }
-        }
         if (flag == 0) {
             currentPost.likedUsers.add(currentUser);
             likeCircle.setFill(Color.RED);
@@ -102,6 +100,7 @@ public class PostPageController{
         }
         else if (currentPost.postType == PostType.VIDEO){
             postLable.setText(currentPost.text);
+            postLable.setWrapText(true);
             Media media = new Media(currentPost.file.toURI().toString());
             MediaPlayer player = new MediaPlayer(media);
             MediaView mediaView = new MediaView(player);

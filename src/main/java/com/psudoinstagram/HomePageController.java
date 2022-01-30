@@ -63,7 +63,7 @@ public class HomePageController implements Initializable {
                                 Image image = new Image(pst.file.toURI().toString());
                                 ImageView imageView = new ImageView(image);
                                 imageView.setX(170);
-                                imageView.setY(10);
+                                imageView.setY(50);
                                 imageView.setFitWidth(270);
                                 imageView.setPreserveRatio(true);
                                 setGraphic(imageView);
@@ -97,6 +97,16 @@ public class HomePageController implements Initializable {
 
     }
     @FXML
+    void explorButton(ActionEvent event) throws IOException{
+        for (int x = 0; x < Data.HomePost.size(); x++) {
+            if (! consumerUser.posts.contains(Data.HomePost.get(x))){
+                if (!observableList.contains(Data.HomePost.get(x)) && !consumerUser.blockedUsers.contains(Data.HomePost.get(x).user))
+                    observableList.add(Data.HomePost.get(x));
+            }
+        }
+        homeList.setItems(observableList);
+    }
+    @FXML
     void postPageButton(ActionEvent event) throws IOException {
         for (Post homepost:Data.HomePost) {
             if (homepost.equals(homeList.getSelectionModel().getSelectedItem())){
@@ -107,7 +117,8 @@ public class HomePageController implements Initializable {
     @FXML
     void searchUserButton(ActionEvent event) throws IOException {
         for (User usr: Data.allUsers) {
-            if (usr.userName.equals(searchUserField.getText()) && !usr.blockedUsers.contains(consumerUser)){
+            if (usr.userName.equals(searchUserField.getText()) && !usr.blockedUsers.contains(consumerUser)
+                && !usr.userName.equals(consumerUser.userName)){
                 searchLabel.setText("User founded!.");
                 searchLabel.setTextFill(Color.GREEN);
                 goUserPage(usr);
@@ -121,12 +132,15 @@ public class HomePageController implements Initializable {
     }
     @FXML
     void refreshHomePage(ActionEvent event) {
+        ObservableList<Post> observableListH = FXCollections.observableArrayList();
         for (int x = 0; x < Data.HomePost.size(); x++) {
             if (! consumerUser.posts.contains(Data.HomePost.get(x))){
-                observableList.add(Data.HomePost.get(x));
+                if (!observableListH.contains(Data.HomePost.get(x)) && consumerUser.followings.contains(Data.HomePost.get(x).user)
+                        && !consumerUser.blockedUsers.contains(Data.HomePost.get(x).user))
+                observableListH.add(Data.HomePost.get(x));
             }
         }
-        homeList.setItems(observableList);
+        homeList.setItems(observableListH);
     }
 
     @FXML
@@ -141,6 +155,18 @@ public class HomePageController implements Initializable {
         stage.setScene(new Scene(profile));
         stage.show();
         Procontroller.list();
+        Procontroller.profileShow();
+    }
+    @FXML
+    void taggedPostButton(ActionEvent event) throws IOException{
+        ObservableList<Post> observableListTag = FXCollections.observableArrayList();
+
+        for (int x = 0; x < consumerUser.taggedPosts.size(); x++) {
+            if (! observableListTag.contains(consumerUser.taggedPosts.get(x))){
+                observableListTag.add(consumerUser.taggedPosts.get(x));
+            }
+        }
+        homeList.setItems(observableListTag);
     }
     @FXML
     void goMessagePage(ActionEvent event) throws IOException{

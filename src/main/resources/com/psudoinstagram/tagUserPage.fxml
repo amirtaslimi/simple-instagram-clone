@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+
+<AnchorPane prefHeight="470.0" prefWidth="314.0" style="-fx-background-color: #FDCFDA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.TagUserPageController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="185.0" layoutY="380.0" onAction="#removeUserChatButton" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #F9839F;" text="Remove user">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.10000000149011612" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <TextField fx:id="usernameChatroomField" layoutX="60.0" layoutY="325.0" prefHeight="26.0" prefWidth="200.0" />
+      <JFXButton buttonType="RAISED" layoutX="50.0" layoutY="380.0" onAction="#addUserChatButton" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #F9839F;" text="Add user">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.10000000149011612" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <ListView fx:id="usersListChatroom" layoutX="57.0" layoutY="12.0" prefHeight="288.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

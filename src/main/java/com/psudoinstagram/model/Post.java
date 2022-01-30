@@ -10,6 +10,7 @@ public class Post {
     public String text;
     public ArrayList<User>likedUsers = new ArrayList<>();
     public ArrayList<Post>comments = new ArrayList<>();
+    public ArrayList<User> taggedUser = new ArrayList<>();
     public String imageFlag;
     public File file;
     public PostType postType;

@@ -23,6 +23,11 @@ public class LoginController {
     private TextField usernameField;
 
     @FXML
+    private TextField phoneNumberField;
+    @FXML
+    private TextField emailField;
+
+    @FXML
     private Label welcomeText;
 
     @FXML
@@ -34,10 +39,11 @@ public class LoginController {
 
     @FXML
     void registerButton(ActionEvent event) {
-        userRegister(usernameField.getText(), passwordField.getText());
+        userRegister(usernameField.getText(), passwordField.getText(), phoneNumberField.getText(),
+                emailField.getText());
     }
-    public int userRegister(String username, String password) {
-        if (username.isEmpty()|| password.isEmpty()) {
+    public int userRegister(String username, String password, String phone, String email) {
+        if (username.isEmpty()|| password.isEmpty() || phone.isEmpty() || email.isEmpty()) {
             welcomeText.setTextFill(Color.RED);
             welcomeText.setText("please fill boxes");
             System.out.println(username);
@@ -54,6 +60,8 @@ public class LoginController {
         welcomeText.setTextFill(Color.GREEN);
         welcomeText.setText("you added in users, please login");
         User user = new User(username, password);
+        user.phone = phone;
+        user.email = email;
         Data.allUsers.add(user);
         return 0;
     }

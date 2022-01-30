@@ -12,16 +12,17 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="684.0" prefWidth="562.0" style="-fx-background-color: #F9839F;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.HomePageController">
+<AnchorPane prefHeight="684.0" prefWidth="656.0" style="-fx-background-color: #F9839F;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psudoinstagram.HomePageController">
    <children>
-      <ButtonBar layoutY="629.0" prefHeight="54.0" prefWidth="419.0">
+      <ButtonBar layoutY="629.0" prefHeight="54.0" prefWidth="547.0">
         <buttons>
             <JFXButton buttonType="RAISED" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="Home Page" />
             <JFXButton buttonType="RAISED" onAction="#goMessagePage" prefHeight="26.0" prefWidth="153.0" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="Message Page" />
             <JFXButton buttonType="RAISED" onAction="#profileButton" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="Profile" />
+            <JFXButton buttonType="RAISED" onAction="#taggedPostButton" prefHeight="26.0" ripplerFill="RED" style="-fx-background-color: #F7446D;" text="tagged post" />
         </buttons>
       </ButtonBar>
-      <ListView fx:id="homeList" layoutX="89.0" layoutY="139.0" prefHeight="446.0" prefWidth="410.0">
+      <ListView fx:id="homeList" layoutX="89.0" layoutY="119.0" prefHeight="502.0" prefWidth="503.0">
          <effect>
             <DropShadow />
          </effect>
@@ -46,8 +47,8 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
-      <Text layoutX="44.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="press open for open posts, then select post and press open to open post page" />
-      <JFXButton buttonType="RAISED" layoutY="200.0" onAction="#refreshHomePage" prefHeight="54.0" prefWidth="87.0" style="-fx-background-color: pink;" text="refresh">
+      <Text layoutX="44.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="press refresh for refresh posts, then select post and press open to open post page" />
+      <JFXButton buttonType="RAISED" layoutY="200.0" onAction="#refreshHomePage" prefHeight="54.0" prefWidth="87.0" style="-fx-background-color: pink;" text="home posts">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -66,5 +67,23 @@
          </ripplerFill>
       </JFXButton>
       <Label fx:id="searchLabel" layoutX="151.0" layoutY="59.0" prefHeight="34.0" prefWidth="186.0" text="search user" />
+      <JFXButton buttonType="RAISED" layoutY="270.0" onAction="#explorButton" prefHeight="54.0" prefWidth="87.0" style="-fx-background-color: pink;" text="explor">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" blue="0.8500000238418579" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>
